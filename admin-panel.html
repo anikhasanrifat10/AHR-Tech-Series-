@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - AHR Tech & Series</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #e50914;
+        }
+        
+        .admin-header h1 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid #e50914;
+        }
+        
+        .stat-card h3 {
+            color: #b3b3b3;
+            margin-bottom: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background: #222;
+            color: #b3b3b3;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tab-btn.active {
+            background: #e50914;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .admin-card {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+        }
+        
+        .admin-card h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #b3b3b3;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .btn-save {
+            background: #e50914;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .content-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .content-item {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .item-info h3 {
+            margin-bottom: 5px;
+        }
+        
+        .item-meta {
+            color: #b3b3b3;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .item-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .edit-btn, .delete-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .edit-btn {
+            background: #2196F3;
+            color: white;
+        }
+        
+        .delete-btn {
+            background: #f44336;
+            color: white;
+        }
+        
+        .logout-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .success {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .error {
+            background: #f44336;
+            color: white;
+        }
+        
+        .telegram-input {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .telegram-input input {
+            flex: 1;
+        }
+        
+        .export-btn, .import-btn {
+            background: #FF9800;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 10px;
+        }
+        
+        .import-btn {
+            background: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-user-shield"></i>
+                <h1>Admin Panel</h1>
+            </div>
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+    
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-cogs"></i> Admin Control Panel</h1>
+            <p>Manage Movies, Series, Anime, Drama & MOD APK</p>
+        </div>
+        
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3>Total Content</h3>
+                <div class="stat-number" id="totalStat">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Movies</h3>
+                <div class="stat-number" id="moviesStat">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Series</h3>
+                <div class="stat-number" id="seriesStat">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>MOD APK</h3>
+                <div class="stat-number" id="modStat">0</div>
+            </div>
+        </div>
+        
+        <div class="admin-tabs">
+            <button class="tab-btn active" data-tab="add">
+                <i class="fas fa-plus"></i> Add Content
+            </button>
+            <button class="tab-btn" data-tab="manage">
+                <i class="fas fa-edit"></i> Manage
+            </button>
+            <button class="tab-btn" data-tab="tools">
+                <i class="fas fa-tools"></i> Tools
+            </button>
+        </div>
+        
+        <div class="tab-content active" id="add-tab">
+            <div class="admin-card">
+                <h2><i class="fas fa-plus-circle"></i> Add New Content</h2>
+                <form id="addForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Title *</label>
+                            <input type="text" id="contentTitle" placeholder="Enter title" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Category *</label>
+                            <select id="contentCategory" required>
+                                <option value="movies">Movie</option>
+                                <option value="series">Web Series</option>
+                                <option value="anime">Anime</option>
+                                <option value="drama">Drama</option>
+                                <option value="mod-apk">MOD APK</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Year / Version</label>
+                            <input type="text" id="contentYear" placeholder="2024 or v2.24.1.75">
+                        </div>
+                        <div class="form-group">
+                            <label>Rating / Size</label>
+                            <input type="text" id="contentRating" placeholder="8.0 or 85 MB">
+                        </div>
+                        <div class="form-group">
+                            <label>Quality / Type</label>
+                            <input type="text" id="contentQuality" placeholder="4K or Premium">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="contentDescription" rows="3" placeholder="Enter description"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Image URL</label>
+                            <input type="text" id="contentPoster" placeholder="Image URL or leave empty for default">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fab fa-telegram"></i> Telegram Link *</label>
+                            <div class="telegram-input">
+                                <input type="url" id="contentTelegram" placeholder="https://t.me/yourchannel/123" required>
+                                <button type="button" onclick="copyLink()" style="background:#4CAF50;color:white;border:none;padding:0 15px;border-radius:5px;cursor:pointer">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-save">
+                        <i class="fas fa-save"></i> Save Content
+                    </button>
+                    
+                    <div id="message" class="message"></div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="manage-tab">
+            <div class="admin-card">
+                <h2><i class="fas fa-list"></i> All Content</h2>
+                <div class="content-list" id="contentList"></div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="tools-tab">
+            <div class="admin-card">
+                <h2><i class="fas fa-tools"></i> Tools</h2>
+                <div class="form-row">
+                    <button class="export-btn" onclick="exportData()">
+                        <i class="fas fa-download"></i> Export Data
+                    </button>
+                    <button class="import-btn" onclick="importData()">
+                        <i class="fas fa-upload"></i> Import Data
+                    </button>
+                </div>
+                <div class="form-row">
+                    <button class="logout-btn" onclick="clearData()">
+                        <i class="fas fa-trash"></i> Clear All Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="auth.js"></script>
+    <script src="admin-script.js"></script>
+</body>
+  </html>
