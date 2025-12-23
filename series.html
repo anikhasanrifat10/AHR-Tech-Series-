@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Series - FireFlix</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-tv"></i>
+            <span>Web Series</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="series.html" class="active">All Series</a>
+            <a href="#netflix">Netflix</a>
+            <a href="#prime">Prime Video</a>
+            <a href="admin.html?category=series"><i class="fas fa-edit"></i> Add Series</a>
+        </div>
+        <div class="search-box">
+            <input type="text" id="series-search" placeholder="Search series...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-tv"></i> Web Series Collection</h1>
+            <p>Complete Seasons with Episode-wise Links</p>
+            <button class="btn-primary" onclick="location.href='admin.html?category=series'">
+                <i class="fas fa-plus"></i> Add New Series
+            </button>
+        </div>
+
+        <div class="series-container" id="series-container">
+            <!-- Series load from JS -->
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        // Load only series
+        document.addEventListener('DOMContentLoaded', function() {
+            const allContent = JSON.parse(localStorage.getItem('fireflix-content')) || [];
+            const series = allContent.filter(item => item.category === 'series');
+            displayContent(series, 'series-container');
+        });
+    </script>
+</body>
+                                       </html>
