@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - FireFlix</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Admin Header -->
+        <div class="admin-header">
+            <h1><i class="fas fa-user-shield"></i> FireFlix Admin Panel</h1>
+            <p>Manage Movies, Series, Anime & Drama Content</p>
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="content">Content</button>
+                <button class="tab-btn" data-tab="links">Telegram Links</button>
+                <button class="tab-btn" data-tab="stats">Statistics</button>
+                <button class="tab-btn" data-tab="settings">Settings</button>
+            </div>
+        </div>
+
+        <!-- Content Management -->
+        <div class="tab-content active" id="content-tab">
+            <div class="admin-card">
+                <h2><i class="fas fa-plus-circle"></i> Add New Content</h2>
+                <form id="add-content-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Title *</label>
+                            <input type="text" id="content-title" required placeholder="Enter title">
+                        </div>
+                        <div class="form-group">
+                            <label>Category *</label>
+                            <select id="content-category" required>
+                                <option value="movies">Movie</option>
+                                <option value="series">Web Series</option>
+                                <option value="anime">Anime</option>
+                                <option value="drama">Drama</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Year</label>
+                            <input type="number" id="content-year" min="2000" max="2030" value="2025">
+                        </div>
+                        <div class="form-group">
+                            <label>Rating (1-10)</label>
+                            <input type="number" id="content-rating" step="0.1" min="1" max="10" value="8.0">
+                        </div>
+                        <div class="form-group">
+                            <label>Quality</label>
+                            <select id="content-quality">
+                                <option>4K</option>
+                                <option>1080p</option>
+                                <option>720p</option>
+                                <option>HD</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Duration</label>
+                            <input type="text" id="content-duration" placeholder="e.g., 120 Min or 8 Episodes">
+                        </div>
+                        <div class="form-group">
+                            <label>Genre</label>
+                            <input type="text" id="content-genre" placeholder="e.g., Action, Drama, Comedy">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="content-description" rows="3" placeholder="Enter description"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Poster Image URL *</label>
+                        <input type="url" id="content-poster" required placeholder="https://example.com/poster.jpg">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fab fa-telegram"></i> Telegram Download Link *</label>
+                            <input type="url" id="content-telegram" required placeholder="https://t.me/yourchannel/123">
+                        </div>
+                        <div class="form-group">
+                            <label>Watch Link (Optional)</label>
+                            <input type="url" id="content-watch" placeholder="https://stream.example.com">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-save">
+                        <i class="fas fa-save"></i> Save Content
+                    </button>
+                </form>
+            </div>
+
+            <!-- Content List -->
+            <div class="admin-card">
+                <h2><i class="fas fa-list"></i> All Content (<span id="total-count">0</span>)</h2>
+                <div class="filter-options">
+                    <select id="filter-category">
+                        <option value="all">All Categories</option>
+                        <option value="movies">Movies</option>
+                        <option value="series">Series</option>
+                        <option value="anime">Anime</option>
+                        <option value="drama">Drama</option>
+                    </select>
+                    <input type="text" id="search-admin" placeholder="Search content...">
+                </div>
+                <div class="content-list" id="admin-content-list">
+                    <!-- Content will load here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Telegram Links Management -->
+        <div class="tab-content" id="links-tab">
+            <div class="admin-card">
+                <h2><i class="fab fa-telegram"></i> Telegram Links Manager</h2>
+                <p>Update download links for existing content</p>
+                
+                <div class="links-container" id="links-container">
+                    <!-- Links will load here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="tab-content" id="stats-tab">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Content</h3>
+                    <div class="stat-number" id="stat-total">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Movies</h3>
+                    <div class="stat-number" id="stat-movies">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Series</h3>
+                    <div class="stat-number" id="stat-series">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Anime</h3>
+                    <div class="stat-number" id="stat-anime">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Drama</h3>
+                    <div class="stat-number" id="stat-drama">0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="tab-content" id="settings-tab">
+            <div class="admin-card">
+                <h2><i class="fas fa-cog"></i> Settings</h2>
+                <div class="settings-option">
+                    <h4>Export Data</h4>
+                    <p>Download all content as JSON file</p>
+                    <button class="btn-export" onclick="exportData()">
+                        <i class="fas fa-download"></i> Export JSON
+                    </button>
+                </div>
+                <div class="settings-option">
+                    <h4>Import Data</h4>
+                    <p>Import content from JSON file</p>
+                    <input type="file" id="import-file" accept=".json">
+                    <button class="btn-import" onclick="importData()">
+                        <i class="fas fa-upload"></i> Import JSON
+                    </button>
+                </div>
+                <div class="settings-option">
+                    <h4>Clear All Data</h4>
+                    <p>Warning: This will delete all content</p>
+                    <button class="btn-danger" onclick="clearAllData()">
+                        <i class="fas fa-trash"></i> Clear All Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="edit-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="edit-modal-body"></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="admin.js"></script>
+</body>
+  </html>
