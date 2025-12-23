@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium MOD APK - AHR Tech & Series</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .mod-header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            margin-bottom: 2rem;
+        }
+        
+        .mod-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .mod-header h1 i {
+            color: gold;
+        }
+        
+        .mod-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+        
+        .feature-card {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #333;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: gold;
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: gold;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-card p {
+            color: #b3b3b3;
+        }
+        
+        .mod-container {
+            padding: 0 2rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .apk-card {
+            position: relative;
+        }
+        
+        .premium-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: gold;
+            color: black;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .add-apk-btn {
+            display: block;
+            background: gold;
+            color: black;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            width: fit-content;
+            margin: 2rem auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                <h1>Premium MOD APK</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="movies.html">Movies</a>
+                <a href="series.html">Series</a>
+                <a href="mod-apk.html" class="active">MOD APK</a>
+                <a href="admin-login.html" class="admin-btn"><i class="fas fa-plus"></i> Add APK</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mod-header">
+        <h1><i class="fas fa-crown"></i> Premium MOD APK Collection</h1>
+        <p style="color: #b3b3b3; font-size: 1.2rem;">Unlocked Features • No Ads • Latest Versions • 100% Safe</p>
+    </div>
+
+    <div class="mod-features">
+        <div class="feature-card">
+            <i class="fas fa-unlock"></i>
+            <h3>Premium Unlocked</h3>
+            <p>All premium features unlocked</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-ad"></i>
+            <h3>Ad-Free Experience</h3>
+            <p>All advertisements removed</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-bolt"></i>
+            <h3>Latest Versions</h3>
+            <p>Always updated to latest version</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Virus Free</h3>
+            <p>100% safe and tested</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">Popular MOD APKs</h2>
+            <a href="admin-login.html" class="add-btn">
+                <i class="fas fa-plus"></i> Add APK
+            </a>
+        </div>
+        
+        <div class="mod-container">
+            <div class="content-grid" id="modApkGrid">
+                <!-- MOD APKs loaded by JavaScript -->
+            </div>
+            
+            <div id="noApk" style="display: none; text-align: center; padding: 3rem; color: #666;">
+                <i class="fas fa-mobile-alt fa-3x" style="margin-bottom: 1rem;"></i>
+                <h3 style="color: white; margin-bottom: 1rem;">No MOD APK Available</h3>
+                <p>Add MOD APKs from Admin Panel</p>
+                <a href="admin-login.html" class="add-apk-btn">
+                    <i class="fas fa-plus"></i> Add First MOD APK
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadModApks();
+        });
+
+        function loadModApks() {
+            const modApks = ahrApp.getContentByCategory('mod-apk');
+            const container = document.getElementById('modApkGrid');
+            const noApk = document.getElementById('noApk');
+            
+            if (modApks.length === 0) {
+                container.style.display = 'none';
+                noApk.style.display = 'block';
+                return;
+            }
+            
+            noApk.style.display = 'none';
+            container.style.display = 'grid';
+            
+            container.innerHTML = modApks.map(apk => `
+                <div class="content-card apk-card">
+                    <div class="premium-badge">PREMIUM</div>
+                    <div class="content-poster" style="background: #1a1a1a; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-mobile-alt" style="font-size: 4rem; color: gold;"></i>
+                    </div>
+                    <div class="content-info">
+                        <h3 class="content-title">${apk.title}</h3>
+                        <div class="content-meta">
+                            <span>${apk.quality}</span>
+                            <span>${apk.duration || 'N/A'}</span>
+                            <span>⭐ ${apk.rating}</span>
+                        </div>
+                        <p style="color: #b3b3b3; font-size: 0.9rem; margin: 0.5rem 0; line-height: 1.4;">
+                            ${apk.description || 'Premium features unlocked'}
+                        </p>
+                        <div class="content-actions">
+                            <button class="action-btn download-btn" onclick="ahrApp.downloadContent(${apk.id})" style="width: 100%;">
+                                <i class="fas fa-download"></i> Download APK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+              </html>
