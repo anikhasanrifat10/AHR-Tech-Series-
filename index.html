@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireFlix - Movies, Series, Anime & Drama</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-fire"></i>
+            <span>FireFlix</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active"><i class="fas fa-home"></i> All</a>
+            <a href="movies.html"><i class="fas fa-film"></i> Movies</a>
+            <a href="series.html"><i class="fas fa-tv"></i> Series</a>
+            <a href="anime.html"><i class="fas fa-dragon"></i> Anime</a>
+            <a href="drama.html"><i class="fas fa-theater-masks"></i> Drama</a>
+            <a href="admin.html" class="admin-btn"><i class="fas fa-user-cog"></i> Admin</a>
+        </div>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Watch Movies, Series, Anime & Drama</h1>
+            <p>4K Quality • Free Downloads • Updated Daily</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <i class="fas fa-film"></i>
+                    <span id="movie-count">0</span>
+                    <small>Movies</small>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-tv"></i>
+                    <span id="series-count">0</span>
+                    <small>Series</small>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-dragon"></i>
+                    <span id="anime-count">0</span>
+                    <small>Anime</small>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-theater-masks"></i>
+                    <span id="drama-count">0</span>
+                    <small>Drama</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Tabs -->
+    <section class="category-tabs">
+        <h2><i class="fas fa-th-large"></i> Browse Categories</h2>
+        <div class="tabs">
+            <a href="movies.html" class="tab">
+                <i class="fas fa-film"></i>
+                <span>Movies</span>
+                <small>Hollywood & Bollywood</small>
+            </a>
+            <a href="series.html" class="tab">
+                <i class="fas fa-tv"></i>
+                <span>Web Series</span>
+                <small>Netflix, Prime, Hotstar</small>
+            </a>
+            <a href="anime.html" class="tab">
+                <i class="fas fa-dragon"></i>
+                <span>Anime</span>
+                <small>Japanese Animation</small>
+            </a>
+            <a href="drama.html" class="tab">
+                <i class="fas fa-theater-masks"></i>
+                <span>Drama</span>
+                <small>Korean & Turkish</small>
+            </a>
+        </div>
+    </section>
+
+    <!-- Latest Content -->
+    <section class="content-section">
+        <div class="section-header">
+            <h2><i class="fas fa-fire"></i> Latest Releases</h2>
+            <a href="admin.html" class="add-btn">
+                <i class="fas fa-plus"></i> Add New Content
+            </a>
+        </div>
+        <div class="content-grid" id="content-grid">
+            <!-- Content will load here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FireFlix</h3>
+                <p>Your ultimate destination for movies, series, anime and drama.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="movies.html">Movies</a>
+                <a href="series.html">Series</a>
+                <a href="anime.html">Anime</a>
+                <a href="drama.html">Drama</a>
+            </div>
+            <div class="footer-section">
+                <h3>Admin</h3>
+                <a href="admin.html">Manage Content</a>
+                <a href="admin.html?tab=links">Update Links</a>
+                <a href="admin.html?tab=users">User Management</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FireFlix. All content for educational purpose.</p>
+            <p class="admin-access">
+                <a href="admin.html">
+                    <i class="fas fa-key"></i> Admin Access
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="content-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+              </html>
