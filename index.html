@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHR Tech & Series | Movies, Web Series, Anime, APK</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="logo-container">
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="#" class="logo">
+                <i class="fas fa-play-circle logo-icon"></i>
+                AHR Tech & Series
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="#series">Web Series</a>
+            <a href="#anime">Anime</a>
+            <a href="#drama">Drama</a>
+            <a href="#apk">Mod APK</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-controls">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search movies, series...">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hidden Admin Access Button -->
+    <button class="admin-secret" id="adminSecret" title="Admin Access (Triple Click)"></button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" onclick="toggleMobileMenu()">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="mobile-nav-links">
+            <a href="#home" class="active" onclick="toggleMobileMenu()">Home</a>
+            <a href="#movies" onclick="toggleMobileMenu()">Movies</a>
+            <a href="#series" onclick="toggleMobileMenu()">Web Series</a>
+            <a href="#anime" onclick="toggleMobileMenu()">Anime</a>
+            <a href="#drama" onclick="toggleMobileMenu()">Drama</a>
+            <a href="#apk" onclick="toggleMobileMenu()">Mod APK</a>
+            <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner" id="home">
+        <img src="images/banner.jpg" class="banner-image" alt="Featured Movie">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h1 class="banner-title">Avatar: Fire and Ash</h1>
+            <div class="banner-meta">
+                <span class="banner-year">2025</span>
+                <span class="banner-rating">
+                    <i class="fas fa-star rating-star"></i>
+                    8.5/10
+                </span>
+                <span class="banner-quality">4K</span>
+                <span>197 Min</span>
+            </div>
+            <p class="banner-description">
+                In the wake of devastating war, Jake Sully and Neytiri face a new threat on Pandora: 
+                the Ash People, a violent Na'vi tribe. The Sully family must fight for survival.
+            </p>
+            <div class="banner-buttons">
+                <button class="btn-play" onclick="showDownloadModal(1)">
+                    <i class="fas fa-play"></i> Watch Now
+                </button>
+                <button class="btn-info" onclick="showMovieInfo(1)">
+                    <i class="fas fa-info-circle"></i> More Info
+                </button>
+                <button class="btn-download" onclick="showDownloadModal(1)">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Tabs -->
+    <div class="category-tabs-container">
+        <div class="category-tabs">
+            <button class="category-tab active" onclick="filterContent('all')">All Content</button>
+            <button class="category-tab" onclick="filterContent('movies')">Movies</button>
+            <button class="category-tab" onclick="filterContent('series')">Web Series</button>
+            <button class="category-tab" onclick="filterContent('anime')">Anime</button>
+            <button class="category-tab" onclick="filterContent('drama')">Drama</button>
+            <button class="category-tab" onclick="filterContent('apk')">Mod APK</button>
+        </div>
+    </div>
+
+    <!-- Trending Now -->
+    <section class="content-section" id="trending">
+        <div class="section-header">
+            <h2 class="section-title">🔥 Trending Now</h2>
+            <a href="#" class="see-all" onclick="showAllTrending()">
+                See All
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+        <div class="content-row" id="trendingRow">
+            <!-- Content loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Latest Movies -->
+    <section class="content-section" id="movies">
+        <div class="section-header">
+            <h2 class="section-title">🎬 Latest Movies</h2>
+            <a href="#" class="see-all" onclick="showCategoryGrid('movies')">
+                See All
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+        <div class="content-row" id="moviesRow">
+            <!-- Content loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Web Series -->
+    <section class="content-section" id="series">
+        <div class="section-header">
+            <h2 class="section-title">📺 Web Series</h2>
+            <a href="#" class="see-all" onclick="showCategoryGrid('series')">
+                See All
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+        <div class="content-row" id="seriesRow">
+            <!-- Content loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Anime -->
+    <section class="content-section" id="anime">
+        <div class="section-header">
+            <h2 class="section-title">🎌 Anime</h2>
+            <a href="#" class="see-all" onclick="showCategoryGrid('anime')">
+                See All
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+        <div class="content-row" id="animeRow">
+            <!-- Content loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Mod APK -->
+    <section class="content-section" id="apk">
+        <div class="section-header">
+            <h2 class="section-title">📱 Mod APK</h2>
+            <a href="#" class="see-all" onclick="showCategoryGrid('apk')">
+                See All
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+        <div class="content-row" id="apkRow">
+            <!-- Content loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="content-section" id="contact">
+        <div class="section-header">
+            <h2 class="section-title">📞 Contact / Request Content</h2>
+        </div>
+        <div class="contact-form">
+            <p>Need a specific movie or series? Request it here or contact us for any issues.</p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="contentRequest">Content Request</label>
+                    <textarea id="contentRequest" placeholder="Which movie/series do you want? Please include language and quality preferences..."></textarea>
+                </div>
+                <button type="button" class="submit-btn" onclick="submitRequest()">
+                    <i class="fas fa-paper-plane"></i> Send Request
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Grid View (Hidden by default) -->
+    <div id="categoryGridView" style="display: none;">
+        <div class="content-section">
+            <div class="section-header">
+                <h2 class="section-title" id="gridCategoryTitle">Movies</h2>
+                <button class="btn-info" onclick="hideCategoryGrid()">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </button>
+            </div>
+            <div class="content-grid" id="categoryGrid">
+                <!-- Grid content loaded by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Download Modal -->
+    <div class="modal" id="downloadModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Avatar: Fire and Ash</h2>
+                <div class="modal-meta" id="modalMeta">
+                    <span>2025</span>
+                    <span>•</span>
+                    <span>197 Min</span>
+                    <span>•</span>
+                    <span>HD</span>
+                </div>
+                <p class="modal-description" id="modalDescription">
+                    In the wake of devastating war, Jake Sully and Neytiri face a new threat on Pandora.
+                </p>
+            </div>
+            <div class="modal-body">
+                <h3>Download Options</h3>
+                <div class="download-options" id="qualityOptions">
+                    <!-- Options loaded by JavaScript -->
+                </div>
+                <div class="telegram-section">
+                    <p>
+                        <i class="fas fa-info-circle"></i>
+                        Join our Telegram channel for instant downloads
+                    </p>
+                    <button class="telegram-btn" onclick="openTelegram()">
+                        <i class="fab fa-telegram"></i>
+                        Open in Telegram
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal (Hidden) -->
+    <div class="modal" id="adminModal" style="display: none;">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeAdminModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2 class="modal-title">🔐 Admin Panel</h2>
+                <p>Restricted Access - For Admin Only</p>
+            </div>
+            <div class="modal-body">
+                <div class="admin-form">
+                    <input type="password" id="adminPassword" placeholder="Enter Admin Password">
+                    <button class="admin-login-btn" onclick="checkAdminPassword()">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </div>
+                <div id="adminDashboard" style="display: none;">
+                    <h3>Admin Dashboard</h3>
+                    <div class="admin-actions">
+                        <button class="admin-action-btn" onclick="addNewContent()">
+                            <i class="fas fa-plus"></i> Add Content
+                        </button>
+                        <button class="admin-action-btn" onclick="manageContent()">
+                            <i class="fas fa-edit"></i> Manage Content
+                        </button>
+                        <button class="admin-action-btn" onclick="viewStats()">
+                            <i class="fas fa-chart-bar"></i> View Stats
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AHR Tech & Series</h3>
+                <p>Your ultimate destination for movies, web series, anime, and mod APKs.</p>
+                <div class="social-links">
+                    <a href="https://t.me/ahr_tech_series" title="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <ul class="footer-links">
+                    <li><a href="#movies">Movies</a></li>
+                    <li><a href="#series">Web Series</a></li>
+                    <li><a href="#anime">Anime</a></li>
+                    <li><a href="#drama">Drama</a></li>
+                    <li><a href="#apk">Mod APK</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#trending">Trending</a></li>
+                    <li><a href="#contact">Request Content</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Important</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">DMCA</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2025 AHR Tech & Series. All content is for promotional purposes only.</p>
+            <p>This website does not host any files. All links are provided by third parties.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Download started!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
