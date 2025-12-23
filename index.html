@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHR Tech & Series - Netflix Style Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Netflix Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <i class="fas fa-play-circle"></i>
+                    <span class="logo-text">AHR Tech & Series</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#movies" class="nav-link"><i class="fas fa-film"></i> Movies</a></li>
+                    <li><a href="#series" class="nav-link"><i class="fas fa-tv"></i> Series</a></li>
+                    <li><a href="#anime" class="nav-link"><i class="fas fa-dragon"></i> Anime</a></li>
+                    <li><a href="#drama" class="nav-link"><i class="fas fa-theater-masks"></i> Drama</a></li>
+                    <li><a href="#modapk" class="nav-link"><i class="fas fa-mobile-alt"></i> MOD APK</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search movies, series, anime...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <!-- Admin লিংক শো করবে না -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auto Slider -->
+    <section class="hero-slider">
+        <div class="slider-container" id="slider">
+            <!-- Slides will load automatically -->
+        </div>
+        <div class="slider-controls">
+            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2><i class="fas fa-th-list"></i> Browse Categories</h2>
+        <div class="categories-grid">
+            <div class="category-card" onclick="showCategory('movies')">
+                <div class="category-icon movies">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Movies</h3>
+                <p>Hollywood, Bollywood & More</p>
+            </div>
+            <div class="category-card" onclick="showCategory('series')">
+                <div class="category-icon series">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <h3>Web Series</h3>
+                <p>Netflix, Prime, Hotstar</p>
+            </div>
+            <div class="category-card" onclick="showCategory('anime')">
+                <div class="category-icon anime">
+                    <i class="fas fa-dragon"></i>
+                </div>
+                <h3>Anime</h3>
+                <p>Japanese Animation</p>
+            </div>
+            <div class="category-card" onclick="showCategory('drama')">
+                <div class="category-icon drama">
+                    <i class="fas fa-theater-masks"></i>
+                </div>
+                <h3>Drama</h3>
+                <p>Korean, Turkish, Chinese</p>
+            </div>
+            <div class="category-card" onclick="showCategory('modapk')">
+                <div class="category-icon modapk">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>MOD APK</h3>
+                <p>Premium Apps Mod</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Content -->
+    <section class="content-section">
+        <div class="section-header">
+            <h2><i class="fas fa-fire"></i> Latest Releases</h2>
+            <div class="admin-access">
+                <!-- Hidden admin access - Only you know the link -->
+                <a href="admin-login.html" class="admin-link" style="color: #e50914; text-decoration: none;">
+                    <i class="fas fa-lock"></i> Admin Panel
+                </a>
+            </div>
+        </div>
+        <div class="content-grid" id="latestContent">
+            <!-- Content will load automatically -->
+        </div>
+    </section>
+
+    <!-- Movies Section -->
+    <section class="content-section" id="movies-section">
+        <h2><i class="fas fa-film"></i> Popular Movies</h2>
+        <div class="content-grid" id="moviesContent">
+            <!-- Movies will load automatically -->
+        </div>
+    </section>
+
+    <!-- Series Section -->
+    <section class="content-section" id="series-section">
+        <h2><i class="fas fa-tv"></i> Web Series</h2>
+        <div class="content-grid" id="seriesContent">
+            <!-- Series will load automatically -->
+        </div>
+    </section>
+
+    <!-- Anime Section -->
+    <section class="content-section" id="anime-section">
+        <h2><i class="fas fa-dragon"></i> Anime</h2>
+        <div class="content-grid" id="animeContent">
+            <!-- Anime will load automatically -->
+        </div>
+    </section>
+
+    <!-- MOD APK Section -->
+    <section class="content-section" id="modapk-section">
+        <h2><i class="fas fa-mobile-alt"></i> MOD APK</h2>
+        <div class="content-grid" id="modapkContent">
+            <!-- MOD APK will load automatically -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-play-circle"></i>
+                <span>AHR Tech & Series</span>
+            </div>
+            <div class="footer-links">
+                <a href="#movies">Movies</a>
+                <a href="#series">Series</a>
+                <a href="#anime">Anime</a>
+                <a href="#drama">Drama</a>
+                <a href="#modapk">MOD APK</a>
+            </div>
+            <p class="footer-note">
+                © 2025 AHR Tech & Series. All content for educational purpose.
+                <br>
+                <small>For admin access: <code>/admin-login.html</code></small>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Search Results Modal -->
+    <div class="modal" id="searchModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Search Results</h3>
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Content Details Modal -->
+    <div class="modal" id="contentModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="contentDetails"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
