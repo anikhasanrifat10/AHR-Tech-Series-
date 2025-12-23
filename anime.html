@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime - FireFlix</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .anime-badge {
+            background: #ff4081;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-dragon"></i>
+            <span>Anime World</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="anime.html" class="active">All Anime</a>
+            <a href="#ongoing">Ongoing</a>
+            <a href="#completed">Completed</a>
+            <a href="admin.html?category=anime"><i class="fas fa-edit"></i> Add Anime</a>
+        </div>
+        <div class="search-box">
+            <input type="text" id="anime-search" placeholder="Search anime...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-dragon"></i> Anime Collection</h1>
+            <p>Subbed & Dubbed Anime with Multi-quality</p>
+            <button class="btn-primary" onclick="location.href='admin.html?category=anime'">
+                <i class="fas fa-plus"></i> Add New Anime
+            </button>
+        </div>
+
+        <div class="anime-grid" id="anime-container">
+            <!-- Anime load from JS -->
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        // Load only anime
+        document.addEventListener('DOMContentLoaded', function() {
+            const allContent = JSON.parse(localStorage.getItem('fireflix-content')) || [];
+            const anime = allContent.filter(item => item.category === 'anime');
+            displayContent(anime, 'anime-container');
+        });
+    </script>
+</body>
+</html>
