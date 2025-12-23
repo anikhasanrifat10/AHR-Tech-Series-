@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies - FireFlix</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-film"></i>
+            <span>Movies</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="movies.html" class="active">All Movies</a>
+            <a href="#hollywood">Hollywood</a>
+            <a href="#bollywood">Bollywood</a>
+            <a href="admin.html?category=movies"><i class="fas fa-edit"></i> Add Movie</a>
+        </div>
+        <div class="search-box">
+            <input type="text" id="movie-search" placeholder="Search movies...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-film"></i> Movies Collection</h1>
+            <p>4K & HD Movies with Telegram Download Links</p>
+            <button class="btn-primary" onclick="location.href='admin.html?category=movies'">
+                <i class="fas fa-plus"></i> Add New Movie
+            </button>
+        </div>
+
+        <div class="filter-bar">
+            <select id="quality-filter">
+                <option value="all">All Quality</option>
+                <option value="4k">4K</option>
+                <option value="1080p">1080p</option>
+                <option value="720p">720p</option>
+            </select>
+            <select id="year-filter">
+                <option value="all">All Years</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+            </select>
+            <select id="genre-filter">
+                <option value="all">All Genres</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="comedy">Comedy</option>
+                <option value="sci-fi">Sci-Fi</option>
+            </select>
+        </div>
+
+        <div class="movies-grid" id="movies-container">
+            <!-- Movies load from JS -->
+        </div>
+
+        <div class="empty-state" id="empty-state" style="display:none;">
+            <i class="fas fa-film fa-3x"></i>
+            <h3>No Movies Found</h3>
+            <p>Add your first movie from Admin Panel</p>
+            <button class="btn-primary" onclick="location.href='admin.html?category=movies'">
+                <i class="fas fa-plus"></i> Add Movie
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Movies Section • <a href="admin.html">Admin Panel</a> • <a href="index.html">Home</a></p>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Load only movies
+        document.addEventListener('DOMContentLoaded', function() {
+            const allContent = JSON.parse(localStorage.getItem('fireflix-content')) || [];
+            const movies = allContent.filter(item => item.category === 'movies');
+            
+            if(movies.length === 0) {
+                document.getElementById('empty-state').style.display = 'block';
+            } else {
+                displayContent(movies, 'movies-container');
+            }
+        });
+    </script>
+</body>
+                                                   </html>
